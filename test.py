@@ -1,6 +1,7 @@
 import telebot 
+local_server = TelegramAPIServer.from_base('http://localhost:8081')
 
-bot = telebot.TeleBot("5339728805:AAHoSmbplCiq93adu5Bo3IX1wgR-UphokJg")
+bot = telebot.TeleBot("5339728805:AAHoSmbplCiq93adu5Bo3IX1wgR-UphokJg",server=local_server)
 
 from ast import parse
 from configparser import Error
