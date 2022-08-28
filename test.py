@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.bot.api import TelegramAPIServer
 import pytube
-
+from pytube import *
 local_server = TelegramAPIServer.from_base('http://localhost:8081')
 bot = Bot(token='5339728805:AAHoSmbplCiq93adu5Bo3IX1wgR-UphokJg', server=local_server)
 dp = Dispatcher(bot)
