@@ -343,6 +343,12 @@ def mainn(message):
             pass
     else:
         pass
+    
+    
+
+from telebot import apihelper
+apihelper.API_URL="http://IP_ADDRESS:PORT/bot{0}/{1}"
+apihelper.FILE_URL="http://IP_ADDRESS:PORT"
 
 bot.infinity_polling()
 
