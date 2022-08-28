@@ -10,7 +10,7 @@ LARGE_FILE = "50 MBdan katta bo'lgan faylga path"
 
 @dp.message_handler(content_types=['text'])
 async def large_file(message: types.Message):
-	yt = YouTube(link)
+	yt = YouTube(message.text)
 	# yt = yt.streams.filter(progressive=True,   file_extension='mp4').order_by('resolution').desc().first()
 	yt = yt.streams.get_highest_resolution()
 
