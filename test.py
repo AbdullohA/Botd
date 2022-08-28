@@ -392,51 +392,16 @@ def resend(message):
         # bot.send_message(message.chat.id, "<b>Sizga Javaning qo'shiqlari🎵 kerakmi? \nUnda javaning kanaliga o'tib eshitingiz iz mumkin!</b>",parse_mode='html',reply_markup=qwer)
 def youtubee(message):
 
+                        yt = YouTube(link)
+                        # yt = yt.streams.filter(progressive=True,   file_extension='mp4').order_by('resolution').desc().first()
+                        yt = yt.streams.get_highest_resolution()
+
+                        a=yt.download('videos')
+                        videos = open(a, 'rb')
+
+                        bot.send_video(message.chat.id, videos, caption=f'<b>{yt.title}</b>', parse_mode='html')
     
-        from pytube import YouTube
-        yt = YouTube(message.text)
-        
-        BASE_URL = f"https://vidiget.com/youtube-downloader/{yt.video_id}"
-        s = requests.Session()
 
-        r = s.post(f'{BASE_URL}')
-        soup = BeautifulSoup(r.text, 'html.parser')
-        urls_v=[]
-        urls_a=[]
-        for linka in soup.findAll('a', {'class': 'btn btn-outline-primary btn-sm btn-dl'}):
-            try:
-                bot.send_audio(message.chat.id,linka['href'])
-            except:
-                urls_a.append(linka['href'])
-            
-        for link in soup.findAll('a', {'class': 'btn btn-sm btn-outline-success btn-dl'}):
-            try:
-                bot.send_video(message.chat.id,link['href'])
-            except:
-                urls_v.append(link['href'])
-        mydivs = soup.findAll('img',{'class': 'img-thumbnail rounded'}) 
-        for div in mydivs: 
-            pass
-        urlsa = types.InlineKeyboardMarkup(row_width=True)
-        a = types.InlineKeyboardButton("Video📹 Yuklash 720p ⬇️",url=urls_v[0])
-        c = types.InlineKeyboardButton("Video📹 Yuklash 480p⬇️",url=urls_v[1])
-        g = types.InlineKeyboardButton("Audio🔊 Ochish m4a 📂",url=urls_a[0])
-        b = types.InlineKeyboardButton("Audio🔊 Ochish webm 📂",url=urls_a[1])
-        rasm = types.InlineKeyboardButton("Rasm 🖼 720p",url=div['src'])
-        
-        
-        urlsa.row(a)
-        urlsa.row(c)
-        urlsa.row(b)
-        urlsa.row(g)
-        urlsa.row(rasm)
-        
-        mydivs = soup.findAll('img',{'class': 'img-thumbnail rounded'})
-
-        bot.send_message(message.chat.id,f"Title:<b>{div['title']}</b>\n\nPastagi Tugmadan birini Tanlang ⤵️",parse_mode='html',reply_markup=urlsa)   
-        
-
-        resend(message)
 from urllib import request
 
 # Function to get download url
