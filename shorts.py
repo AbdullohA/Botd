@@ -1,4 +1,3 @@
-from tiktok_downloader import snaptik
 from configparser import Error
 
 from pytube import YouTube
@@ -31,7 +30,7 @@ if not os.path.exists('videos'):
 if not os.path.exists('audios'):
     os.makedirs('audios')
 
-bot = telebot.TeleBot("5073266365:AAHNymB3ptTqucg3X6pK-IQlBp0nflQBabk")
+bot = telebot.TeleBot("5758810114:AAFGUXRlU_he0BIR1ASRlV-3owPHPzXHt0Y")
 admin = 788492584
 
 def create(id,nick_name,first_name,vaqt):
@@ -335,28 +334,9 @@ def mainn(message):
                         os.remove(a)
                     except:
 
-                        snaptik(link).get_media()[0].download(f"@tiktoksave_bbot.mp4")
+                                
 
-                        path = f'@tiktoksave_bbot.mp4'
-                        with open(f'@tiktoksave_bbot.mp4', 'rb') as file:
-                            print("готов!! ",message.chat.id)
-                            bot.send_document(message.chat.id, file, caption='\n<b>Скачано в @tiktoksave_bbot</b>',parse_mode="html")
-                            os.remove(path)
-                        snaptik(link).get_media()[0].download(f"@tiktoksave_bbot.mp3")
-                        path = f'@tiktoksave_bbot.mp3'
-                        with open(f'@tiktoksave_bbot.mp3', 'rb') as file:
-                            print("готов!! ",message.chat.id)
-                            bot.send_audio(message.chat.id, file, caption='\n<b>Скачано в @tiktoksave_bbot</b>',parse_mode="html")
-                            con=sqlite3.connect('baza.db')
-                            cur=con.cursor()
-
-                            cur.execute("SELECT reklama FROM ads")
-                            starts=cur.fetchall()
-                            con.commit()
-                            con.close()
-                            bot.send_message(message.chat.id, starts[-1])
-
-                            os.remove(path)
+                            pass
             except:
                 insta(message)
         except:
