@@ -1,5 +1,5 @@
 import telebot 
-local_server = TelegramAPIServer.from_base('http://localhost:8081')
+local_server = TelegramAPIServer.from_base('http://localhost:8000')
 
 bot = telebot.TeleBot("5339728805:AAHoSmbplCiq93adu5Bo3IX1wgR-UphokJg",server=local_server)
 
