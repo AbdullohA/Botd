@@ -1,6 +1,6 @@
 import telebot 
 
-bot = telebot.Telebot("5339728805:AAHoSmbplCiq93adu5Bo3IX1wgR-UphokJg")
+bot = telebot.TeleBot("5339728805:AAHoSmbplCiq93adu5Bo3IX1wgR-UphokJg")
 
 from ast import parse
 from tiktok_downloader import snaptik
