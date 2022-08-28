@@ -346,10 +346,8 @@ def mainn(message):
     
     
 
-from telebot import apihelper
-apihelper.API_URL="http://IP_ADDRESS:PORT/bot{0}/{1}"
-apihelper.FILE_URL="http://IP_ADDRESS:PORT"
-
-bot.infinity_polling()
-
+if __name__ == '__main__':
+    apihelper.API_URL="http://localhost:8081/bot{0}/{1}"
+    apihelper.FILE_URL="http://localhost:8081"
+    bot.infinity_polling()
 #version 2.1
